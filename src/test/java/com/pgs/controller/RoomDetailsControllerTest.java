@@ -81,13 +81,10 @@ public class RoomDetailsControllerTest {
 
 		RoomDetailsDTO productDTO = new RoomDetailsDTO();
 
-		productDTO.setCategory("Electronics");
-		productDTO.setPrice(new BigDecimal(1000));
-		productDTO.setProductId(1230L);
-		productDTO.setProductName("Nokia Mobile");
+		
 
 		products.add(productDTO);
-		productResponse.setProducts(products);
+		
 		productResponse.setMessage("SUCCESS");
 		productResponse.setSuccess(true);
 		return productResponse;

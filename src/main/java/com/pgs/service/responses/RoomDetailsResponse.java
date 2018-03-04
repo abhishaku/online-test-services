@@ -11,12 +11,13 @@ public class RoomDetailsResponse extends BaseResponse {
 
 	public List<RoomDetailsDTO> getRoomsDetails() {
 		if (roomDetails == null) {
-			new ArrayList<>();
+			roomDetails = new ArrayList<>();
 		}
 		return roomDetails;
 	}
+	
 
-	public void setProducts(List<RoomDetailsDTO> roomDetails) {
+	public void setRoomDetails(List<RoomDetailsDTO> roomDetails) {
 		this.roomDetails = roomDetails;
 	}
 

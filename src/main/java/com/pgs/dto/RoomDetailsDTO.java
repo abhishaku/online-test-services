@@ -6,58 +6,38 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class RoomDetailsDTO {
 
-	private Long productId;
+	private String roomId;
 
-	private String productName;
+	private String roomDescription;
 
-	private BigDecimal price;
+	private BigDecimal roomPrice;
 
-	private String category;
+	@ApiModelProperty(notes = "Room ID", required = true)
+	public String getRoomId() {
+		return this.roomId;
+	}
+
+	public void setRoomId(final String roomId) {
+		this.roomId = roomId;
+	}
 	
-	private String description;
-
-	@ApiModelProperty(notes = "Unique Product ID", required = true)
-	public Long getProductId() {
-		return productId;
+	@ApiModelProperty(notes = "Room Description", required = true)
+	public String getRoomDescription() {
+		return this.roomDescription;
 	}
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
+	public void setRoomDescription(final String roomDescription) {
+		this.roomDescription = roomDescription;
+	}
+	
+	@ApiModelProperty(notes = "Room Price", required = true)
+	public BigDecimal getRoomPrice() {
+		return this.roomPrice;
 	}
 
-	@ApiModelProperty(notes = "Name of the product", required = true)
-	public String getProductName() {
-		return productName;
+	public void setRoomPrice(final BigDecimal roomPrice) {
+		this.roomPrice = roomPrice;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-	@ApiModelProperty(notes = "Price of the product", required = true)
-	public BigDecimal getPrice() {
-		return price;
-	}
-
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
-
-	@ApiModelProperty(notes = "Category of the product", required = true)
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
-	@ApiModelProperty(notes = "Product description", required = true)
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
+	
 }

@@ -1,5 +1,6 @@
 package com.pgs.service.impl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,10 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.pgs.dao.entity.Product;
+import com.pgs.dao.entity.Rooms;
 import com.pgs.dto.RoomDetailsDTO;
 import com.pgs.exception.RequestException;
-import com.pgs.repository.ProductRepository;
+import com.pgs.repository.RoomsRepository;
 import com.pgs.service.RoomDetailsService;
 import com.pgs.service.responses.RoomDetailsResponse;
 
@@ -25,96 +26,52 @@ public class RoomDetailsServiceImpl implements RoomDetailsService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(RoomDetailsServiceImpl.class);
 
 	@Autowired
-	private ProductRepository productRepository;
+	private RoomsRepository roomsRepository;
 
 	@Override
 	public RoomDetailsResponse getAllRoomDetails() {
 		
-		RoomDetailsResponse productResponse = new RoomDetailsResponse();
-		List<RoomDetailsDTO> products = new ArrayList<>();
+		RoomDetailsResponse roomResponse = new RoomDetailsResponse();
+		List<RoomDetailsDTO> rooms = new ArrayList<>();
 
-		List<Product> productsList = productRepository.findAll();
+		List<Rooms> roomsDetails = roomsRepository.findAll();
 
-		if (CollectionUtils.isEmpty(productsList)) {
-			LOGGER.info("No Data available in product repository");
-			productResponse.setMessage("No Prodcuts Found");
-			productResponse.setSuccess(true);
-			productResponse.setProducts(products);
-			return productResponse;
+		if (CollectionUtils.isEmpty(roomsDetails)) {
+			LOGGER.info("No Data available in room repository");
+			roomResponse.setMessage("No room Found");
 		}
-
-		productsList.forEach(product -> {
-			RoomDetailsDTO productDTO = mapProductToProductDTO(product);
-			products.add(productDTO);
+		
+		roomsDetails.forEach(roomData -> {
+			RoomDetailsDTO roomsDTO = this.mapProductToProductDTO(roomData);
+			rooms.add(roomsDTO);
 		});
 		
-		productResponse.setMessage("SUCCESS");
-		productResponse.setSuccess(true);
-		productResponse.setProducts(products);
-		return productResponse;
+		roomResponse.setMessage(rooms.size() + " Rooms are available.");
+		//roomResponse.setSuccess(true);
+		roomResponse.setRoomDetails(rooms);
+		return roomResponse;
 	}
-
-	private RoomDetailsDTO mapProductToProductDTO(Product product) {
-
-		RoomDetailsDTO productDTO = new RoomDetailsDTO();
-
-		productDTO.setProductId(product.getId());
-		productDTO.setProductName(product.getProductName());
-		productDTO.setPrice(product.getPrice());
-		productDTO.setCategory(product.getCategory());
-		productDTO.setDescription(product.getDescription());
-		return productDTO;
-	}
+	
 
 	@Override
-	public void createProduct(RoomDetailsDTO productDTO) {
+	public RoomDetailsResponse getRoomDetails(String roomId) {
 		
-		Product product = buildProduct(productDTO);
-		productRepository.save(product);
+		RoomDetailsResponse roomResponse = new RoomDetailsResponse();
+		List<RoomDetailsDTO> rooms = new ArrayList<>();
+		Rooms roomDetails = roomsRepository.findOneByRoomId(roomId);
+		RoomDetailsDTO roomsDTO = this.mapProductToProductDTO(roomDetails);
+		rooms.add(roomsDTO);
+		roomResponse.setMessage("Searched room is available.");
+		roomResponse.setRoomDetails(rooms);
+		return roomResponse;
 	}
 
-	private Product buildProduct(RoomDetailsDTO productDTO) {
+	private RoomDetailsDTO mapProductToProductDTO(final Rooms roomData) {
 
-		if (productDTO == null) {
-			throw new RequestException("Unable to add product as productDTO is null");
-		}
-
-		final Date currentDate = new Date(Calendar.getInstance().getTime().getTime());
-		Product product = new Product();
-
-		if (StringUtils.isEmpty(productDTO.getProductName())) {
-			throw new RequestException("Product name cannot be empty");
-		} else {
-			Product existing = productRepository.findOneByProductNameIgnoreCase(productDTO.getProductName());
-			if(existing != null) {
-				throw new RequestException("Product name cannot be duplicate");
-			}else {
-				product.setProductName(productDTO.getProductName());
-			}
-		}
-
-		if (productDTO.getPrice() == null || productDTO.getPrice().intValue() <= 0) {
-			throw new RequestException("Product price cannot be null or zero or negetive");
-		} else {
-			product.setPrice(productDTO.getPrice());
-		}
-
-		if (StringUtils.isEmpty(productDTO.getCategory())) {
-			throw new RequestException("Product category cannot be empty");
-		} else {
-			product.setCategory(productDTO.getCategory());
-		}
-
-		if (StringUtils.isEmpty(productDTO.getDescription())) {
-			throw new RequestException("Product description cannot be empty");
-		} else {
-			product.setDescription(productDTO.getDescription());
-		}
-
-		product.setCreatedBy("user1");
-		product.setCreationDate(currentDate);
-		product.setModifiedDate(currentDate);
-		product.setUpdatedBy("user2");
-		return product;
+		RoomDetailsDTO roomDetailsData = new RoomDetailsDTO();
+		roomDetailsData.setRoomId(roomData.getRoomId());
+		roomDetailsData.setRoomDescription(roomData.getRoomDescription());
+		roomDetailsData.setRoomPrice(roomData.getRoomPrice());
+		return roomDetailsData;	
 	}
 }
