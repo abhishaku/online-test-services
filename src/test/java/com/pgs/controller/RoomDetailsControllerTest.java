@@ -1,11 +1,8 @@
 package com.pgs.controller;
 
 import static org.mockito.Mockito.when;
-
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +18,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
 import com.pgs.dto.RoomDetailsDTO;
 import com.pgs.service.RoomDetailsService;
 import com.pgs.service.responses.RoomDetailsResponse;

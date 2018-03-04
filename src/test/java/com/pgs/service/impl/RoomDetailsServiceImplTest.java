@@ -3,18 +3,14 @@ package com.pgs.service.impl;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.MockitoAnnotations.initMocks;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-
 import com.pgs.config.AbstractServiceTestConfig;
 import com.pgs.dao.entity.Product;
 import com.pgs.dto.RoomDetailsDTO;
@@ -54,28 +50,28 @@ public class RoomDetailsServiceImplTest extends AbstractServiceTestConfig {
 	
 	@Test(expected = RequestException.class)
 	public void testCreateProduct_null_productName() {
-		RoomDetailsDTO prod = createProducDTOtMock();
+		//RoomDetailsDTO prod = createProducDTOtMock();
 		//prod.setProductName(null);
 		//roomService.createProduct(prod);
 	}
 	
 	@Test(expected = RequestException.class)
 	public void testCreateProduct_null_productDesc() {
-		RoomDetailsDTO prod = createProducDTOtMock();
+		//RoomDetailsDTO prod = createProducDTOtMock();
 		//prod.setDescription(null);
 		//roomService.createProduct(prod);
 	}
 	
 	@Test(expected = RequestException.class)
 	public void testCreateProduct_null_productPrice() {
-		RoomDetailsDTO prod = createProducDTOtMock();
+		//RoomDetailsDTO prod = createProducDTOtMock();
 		//prod.setPrice(null);
 		//roomService.createProduct(prod);
 	}
 	
 	@Test(expected = RequestException.class)
 	public void testCreateProduct_null_productCategory() {
-		RoomDetailsDTO prod = createProducDTOtMock();
+		//RoomDetailsDTO prod = createProducDTOtMock();
 		//prod.setCategory(null);
 		//roomService.createProduct(prod);
 	}
@@ -118,7 +114,7 @@ public class RoomDetailsServiceImplTest extends AbstractServiceTestConfig {
 		expectedProductResponse.setSuccess(true);
 
 		// Actual Object
-		List<Product> products = new ArrayList<>();
+		//List<Product> products = new ArrayList<>();
 		//Mockito.doReturn(products).when(productRepository).findAll();
 
 		RoomDetailsResponse originalProductResponse = roomService.getAllRoomDetails();
