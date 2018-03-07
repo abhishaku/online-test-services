@@ -18,12 +18,14 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import com.pgs.dto.RoomDetailsDTO;
-import com.pgs.service.RoomDetailsService;
-import com.pgs.service.responses.RoomDetailsResponse;
+
+import com.epam.online.test.controller.AssesmentQuestionsController;
+import com.epam.online.test.dto.RoomDetailsDTO;
+import com.epam.online.test.service.responses.RoomDetailsResponse;
+import com.epam.online.test.services.RoomDetailsService;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(value = RoomDetailsController.class, secure = false)
+@WebMvcTest(value = AssesmentQuestionsController.class, secure = false)
 public class RoomDetailsControllerTest {
 
 	@Autowired

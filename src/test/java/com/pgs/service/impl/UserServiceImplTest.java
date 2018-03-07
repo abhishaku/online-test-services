@@ -7,12 +7,13 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.MockitoAnnotations.initMocks;
 
+import com.epam.online.test.dao.entity.User;
+import com.epam.online.test.dto.UserDTO;
+import com.epam.online.test.dto.UserLoginDTO;
+import com.epam.online.test.repository.UserRepository;
+import com.epam.online.test.services.impl.UserServiceImpl;
+import com.epam.online.test.utils.PasswordUtility;
 import com.pgs.config.AbstractServiceTestConfig;
-import com.pgs.dao.entity.User;
-import com.pgs.dto.UserDTO;
-import com.pgs.dto.UserLoginDTO;
-import com.pgs.repository.UserRepository;
-import com.pgs.util.PasswordUtility;
 
 /**
  * @author Anand Sadawarte.

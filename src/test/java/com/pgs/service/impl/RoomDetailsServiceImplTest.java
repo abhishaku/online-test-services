@@ -11,11 +11,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+
+import com.epam.online.test.dao.entity.Product;
+import com.epam.online.test.dto.RoomDetailsDTO;
+import com.epam.online.test.exception.RequestException;
+import com.epam.online.test.service.responses.RoomDetailsResponse;
+import com.epam.online.test.services.impl.RoomDetailsServiceImpl;
 import com.pgs.config.AbstractServiceTestConfig;
-import com.pgs.dao.entity.Product;
-import com.pgs.dto.RoomDetailsDTO;
-import com.pgs.exception.RequestException;
-import com.pgs.service.responses.RoomDetailsResponse;
 
 public class RoomDetailsServiceImplTest extends AbstractServiceTestConfig {
 
