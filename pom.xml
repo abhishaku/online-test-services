@@ -9,11 +9,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	
-	<artifactId>hotel-management-rest</artifactId>
 	<packaging>war</packaging>
 
-	<name>EPAM PGS Rest</name>
-	<description>Rest for EPAM PGS</description>
+	<description>REST Services for Online Test Portal</description>
 
 	<properties>
 		<io.springfox>2.6.0</io.springfox>
@@ -246,4 +244,6 @@
 	</build>
 
 
+	<artifactId>online-test-services</artifactId>
+	<name>Online Test Services</name>
 </project>
