@@ -39,7 +39,7 @@ public class AssesmentQuestionsServiceImpl implements AssesmentQuestionsService 
 			questionsDetails.add(questionDTO);
 		});
 		
-		questionsResponse.setMessage(questionsData.size() + " question found.");
+		questionsResponse.setMessage(questionsData.size() + " question(s) found.");
 		//roomResponse.setSuccess(true);
 		questionsResponse.setQuestionDetails(questionsDetails);
 		return questionsResponse;
