@@ -1,6 +1,5 @@
 package com.epam.online.test.dao.entity;
 
-import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,41 +7,29 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "room_details")
-public class Rooms {
+@Table(name = "questions_details")
+public class Questions {
 	
 	@Id
-	@Column(name = "room_id" , unique = true, nullable = false)
-	private String roomId;
+	@Column(name = "question_id" , unique = true, nullable = false)
+	private String questionId;
 	
-	@Column(name = "room_description")
-	private String roomDescription;	
-	
-	@Column(name = "room_price")
-	private BigDecimal roomPrice ;
-	
-	public String getRoomId() {
-		return roomId;
+	@Column(name = "question_description")
+	private String questionDescription;
+
+	public String getQuestionId() {
+		return questionId;
 	}
 
-	public void setRoomId(String roomId) {
-		this.roomId = roomId;
+	public void setQuestionId(String questionId) {
+		this.questionId = questionId;
 	}
 
-	public String getRoomDescription() {
-		return roomDescription;
+	public String getQuestionDescription() {
+		return questionDescription;
 	}
 
-	public void setRoomDescription(String roomDescription) {
-		this.roomDescription = roomDescription;
-	}
-
-	public BigDecimal getRoomPrice() {
-		return roomPrice;
-	}
-
-	public void setRoomPrice(BigDecimal roomPrice) {
-		this.roomPrice = roomPrice;
-	}
-	
+	public void setQuestionDescription(String questionDescription) {
+		this.questionDescription = questionDescription;
+	}		
 }

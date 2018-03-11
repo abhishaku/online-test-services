@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.epam.online.test.dao.entity.Rooms;
+import com.epam.online.test.dao.entity.Questions;
 
 @Repository
-public interface RoomsRepository extends CrudRepository<Rooms, Long> {
+public interface QuestionsRepository extends CrudRepository<Questions, Long> {
 	
-	List<Rooms> findAll();
+	List<Questions> findAll();
 	
-	Rooms findOneByRoomId(String roomId);
+	Questions findOneByQuestionId(String roomId);
 }

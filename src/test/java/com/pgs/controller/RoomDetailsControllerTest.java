@@ -20,9 +20,9 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.epam.online.test.controller.AssesmentQuestionsController;
-import com.epam.online.test.dto.RoomDetailsDTO;
-import com.epam.online.test.service.responses.RoomDetailsResponse;
-import com.epam.online.test.services.RoomDetailsService;
+import com.epam.online.test.dto.QuestionDetailsDTO;
+import com.epam.online.test.service.responses.AssesmentQuestionsResponse;
+import com.epam.online.test.services.AssesmentQuestionsService;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = AssesmentQuestionsController.class, secure = false)
@@ -32,7 +32,7 @@ public class RoomDetailsControllerTest {
 	private MockMvc mockMvc;
 
 	@MockBean
-	private RoomDetailsService roomService;
+	private AssesmentQuestionsService roomService;
 
 	@Before
 	public void setUp() {
@@ -47,8 +47,8 @@ public class RoomDetailsControllerTest {
 	@Test
 	public void testGetAllProducts() throws Exception {
 
-		RoomDetailsResponse productResponse = createMockProductResponse();
-		Mockito.doReturn(productResponse).when(roomService).getAllRoomDetails();
+		AssesmentQuestionsResponse productResponse = createMockProductResponse();
+		Mockito.doReturn(productResponse).when(roomService).getAllAssesmentQuestions();
 
 		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/auth/v1/products").accept(MediaType.APPLICATION_JSON);
 
@@ -62,7 +62,7 @@ public class RoomDetailsControllerTest {
 	@Test
 	public void testGetAllProductsWithException() throws Exception {
 
-		when(roomService.getAllRoomDetails()).thenThrow(new RuntimeException());
+		when(roomService.getAllAssesmentQuestions()).thenThrow(new RuntimeException());
 
 		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/auth/v1/products").accept(MediaType.APPLICATION_JSON);
 
@@ -73,11 +73,11 @@ public class RoomDetailsControllerTest {
 	}
 
 
-	private RoomDetailsResponse createMockProductResponse() {
-		RoomDetailsResponse productResponse = new RoomDetailsResponse();
-		List<RoomDetailsDTO> products = new ArrayList<>();
+	private AssesmentQuestionsResponse createMockProductResponse() {
+		AssesmentQuestionsResponse productResponse = new AssesmentQuestionsResponse();
+		List<QuestionDetailsDTO> products = new ArrayList<>();
 
-		RoomDetailsDTO productDTO = new RoomDetailsDTO();
+		QuestionDetailsDTO productDTO = new QuestionDetailsDTO();
 
 		
 

@@ -3,7 +3,6 @@ package com.pgs.service.impl;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.MockitoAnnotations.initMocks;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
@@ -11,28 +10,26 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-
-import com.epam.online.test.dao.entity.Product;
-import com.epam.online.test.dto.RoomDetailsDTO;
+import com.epam.online.test.dto.QuestionDetailsDTO;
 import com.epam.online.test.exception.RequestException;
-import com.epam.online.test.service.responses.RoomDetailsResponse;
-import com.epam.online.test.services.impl.RoomDetailsServiceImpl;
+import com.epam.online.test.service.responses.AssesmentQuestionsResponse;
+import com.epam.online.test.services.impl.AssesmentQuestionsServiceImpl;
 import com.pgs.config.AbstractServiceTestConfig;
 
 public class RoomDetailsServiceImplTest extends AbstractServiceTestConfig {
 
 	@InjectMocks
-	private RoomDetailsServiceImpl roomService;
+	private AssesmentQuestionsServiceImpl roomService;
 
 	@Mock
 	//private ProductRepository productRepository;
 
-	private RoomDetailsResponse expectedProductResponse;
+	private AssesmentQuestionsResponse expectedProductResponse;
 
 	@Before
 	public void setUp() {
 		initMocks(this);
-		expectedProductResponse = new RoomDetailsResponse();
+		expectedProductResponse = new AssesmentQuestionsResponse();
 	}
 
 	@After
@@ -89,20 +86,20 @@ public class RoomDetailsServiceImplTest extends AbstractServiceTestConfig {
 	
 	@Test
 	public void testGetAllProducts() {
-		List<RoomDetailsDTO> productDTOs = new ArrayList<>();
+		List<QuestionDetailsDTO> productDTOs = new ArrayList<>();
 		productDTOs.add(createProducDTOtMock());
 
 		expectedProductResponse.setMessage("SUCCESS");
 		expectedProductResponse.setSuccess(true);
 		//expectedProductResponse.setProducts(productDTOs);
 
-		List<Product> products = new ArrayList<>();
-		Product product = createProductMock();
-		products.add(product);
+//		List<Product> products = new ArrayList<>();
+//		Product product = createProductMock();
+//		products.add(product);
 
 		//Mockito.doReturn(products).when(productRepository).findAll();
 
-		RoomDetailsResponse originalProductResponse = roomService.getAllRoomDetails();
+		AssesmentQuestionsResponse originalProductResponse = roomService.getAllAssesmentQuestions();
 		assertThat(expectedProductResponse.getMessage(), equalTo(originalProductResponse.getMessage()));
 		assertThat(expectedProductResponse.isSuccess(), equalTo(originalProductResponse.isSuccess()));
 		// assertThat(expectedProductResponse,
@@ -119,23 +116,15 @@ public class RoomDetailsServiceImplTest extends AbstractServiceTestConfig {
 		//List<Product> products = new ArrayList<>();
 		//Mockito.doReturn(products).when(productRepository).findAll();
 
-		RoomDetailsResponse originalProductResponse = roomService.getAllRoomDetails();
+		AssesmentQuestionsResponse originalProductResponse = roomService.getAllAssesmentQuestions();
 
 		assertThat(expectedProductResponse.getMessage(), equalTo(originalProductResponse.getMessage()));
 		assertThat(expectedProductResponse.isSuccess(), equalTo(originalProductResponse.isSuccess()));
 	}
 
-	private Product createProductMock() {
-		Product product = new Product();
-		product.setCategory("Electronics");
-		product.setPrice(new BigDecimal(1000));
-		product.setId(1L);
-		product.setProductName("Nokia Mobile");
-		return product;
-	}
 
-	private RoomDetailsDTO createProducDTOtMock() {
-		RoomDetailsDTO product = new RoomDetailsDTO();
+	private QuestionDetailsDTO createProducDTOtMock() {
+		QuestionDetailsDTO product = new QuestionDetailsDTO();
 		//product.setCategory("Electronics");
 		//product.setPrice(new BigDecimal(1000));
 		//product.setProductId(1L);

@@ -7,65 +7,63 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.epam.online.test.dao.entity.Rooms;
-import com.epam.online.test.dto.RoomDetailsDTO;
-import com.epam.online.test.repository.RoomsRepository;
-import com.epam.online.test.service.responses.RoomDetailsResponse;
-import com.epam.online.test.services.RoomDetailsService;
+import com.epam.online.test.dao.entity.Questions;
+import com.epam.online.test.dto.QuestionDetailsDTO;
+import com.epam.online.test.repository.QuestionsRepository;
+import com.epam.online.test.service.responses.AssesmentQuestionsResponse;
+import com.epam.online.test.services.AssesmentQuestionsService;
 
 @Service
-public class RoomDetailsServiceImpl implements RoomDetailsService {
+public class AssesmentQuestionsServiceImpl implements AssesmentQuestionsService {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(RoomDetailsServiceImpl.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(AssesmentQuestionsServiceImpl.class);
 
 	@Autowired
-	private RoomsRepository roomsRepository;
+	private QuestionsRepository questionsRepository;
 
 	@Override
-	public RoomDetailsResponse getAllRoomDetails() {
+	public AssesmentQuestionsResponse getAllAssesmentQuestions() {
 		
-		RoomDetailsResponse roomResponse = new RoomDetailsResponse();
-		List<RoomDetailsDTO> rooms = new ArrayList<>();
+		AssesmentQuestionsResponse questionsResponse = new AssesmentQuestionsResponse();
+		List<QuestionDetailsDTO> questionsDetails = new ArrayList<>();
 
-		List<Rooms> roomsDetails = roomsRepository.findAll();
+		List<Questions> questionsData = questionsRepository.findAll();
 
-		if (CollectionUtils.isEmpty(roomsDetails)) {
-			LOGGER.info("No Data available in room repository");
-			roomResponse.setMessage("No room Found");
+		if (CollectionUtils.isEmpty(questionsData)) {
+			LOGGER.info("No Data available in question repository");
+			questionsResponse.setMessage("No question Found");
 		}
 		
-		roomsDetails.forEach(roomData -> {
-			RoomDetailsDTO roomsDTO = this.mapProductToProductDTO(roomData);
-			rooms.add(roomsDTO);
+		questionsData.forEach(questionData -> {
+			QuestionDetailsDTO questionDTO = this.getMappedQuestionFromQuestionDTO(questionData);
+			questionsDetails.add(questionDTO);
 		});
 		
-		roomResponse.setMessage(rooms.size() + " Rooms are available.");
+		questionsResponse.setMessage(questionsData.size() + " question found.");
 		//roomResponse.setSuccess(true);
-		roomResponse.setRoomDetails(rooms);
-		return roomResponse;
+		questionsResponse.setQuestionDetails(questionsDetails);
+		return questionsResponse;
 	}
 	
 
 	@Override
-	public RoomDetailsResponse getRoomDetails(String roomId) {
+	public AssesmentQuestionsResponse getQuestionDetails(final String questionId) {
 		
-		RoomDetailsResponse roomResponse = new RoomDetailsResponse();
-		List<RoomDetailsDTO> rooms = new ArrayList<>();
-		Rooms roomDetails = roomsRepository.findOneByRoomId(roomId);
-		RoomDetailsDTO roomsDTO = this.mapProductToProductDTO(roomDetails);
-		rooms.add(roomsDTO);
-		roomResponse.setMessage("Searched room is available.");
-		roomResponse.setRoomDetails(rooms);
-		return roomResponse;
+		AssesmentQuestionsResponse questionsResponse = new AssesmentQuestionsResponse();
+		List<QuestionDetailsDTO> questionsDetails = new ArrayList<>();
+		Questions questions = questionsRepository.findOneByQuestionId(questionId);
+		QuestionDetailsDTO questionsDTO = this.getMappedQuestionFromQuestionDTO(questions);
+		questionsDetails.add(questionsDTO);
+		questionsResponse.setMessage("Searched question is found.");
+		questionsResponse.setQuestionDetails(questionsDetails);
+		return questionsResponse;
 	}
 
-	private RoomDetailsDTO mapProductToProductDTO(final Rooms roomData) {
+	private QuestionDetailsDTO getMappedQuestionFromQuestionDTO(final Questions questionsData) {
 
-		RoomDetailsDTO roomDetailsData = new RoomDetailsDTO();
-		roomDetailsData.setRoomId(roomData.getRoomId());
-		roomDetailsData.setRoomDescription(roomData.getRoomDescription());
-		roomDetailsData.setRoomPrice(roomData.getRoomPrice());
-		return roomDetailsData;	
+		QuestionDetailsDTO questionsDetailsData = new QuestionDetailsDTO();
+		questionsDetailsData.setQuestionId(questionsData.getQuestionId());
+		questionsDetailsData.setQuestionDescription(questionsData.getQuestionDescription());
+		return questionsDetailsData;	
 	}
 }

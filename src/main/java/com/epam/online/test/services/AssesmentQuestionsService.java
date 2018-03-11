@@ -1,10 +1,10 @@
 package com.epam.online.test.services;
 
-import com.epam.online.test.service.responses.RoomDetailsResponse;
+import com.epam.online.test.service.responses.AssesmentQuestionsResponse;
 
-public interface RoomDetailsService {
+public interface AssesmentQuestionsService {
 	
-	RoomDetailsResponse getAllRoomDetails();
+	AssesmentQuestionsResponse getAllAssesmentQuestions();
 	
-	RoomDetailsResponse getRoomDetails(String roomId);
+	AssesmentQuestionsResponse getQuestionDetails(String questionId);
 }

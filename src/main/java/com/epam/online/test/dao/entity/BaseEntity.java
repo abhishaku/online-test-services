@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * @author Anand Sadawarte
+ * @author Abhishek Mishra
  */
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable{

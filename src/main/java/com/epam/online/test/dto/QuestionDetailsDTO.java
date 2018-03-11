@@ -1,43 +1,29 @@
 package com.epam.online.test.dto;
 
-import java.math.BigDecimal;
 
 import io.swagger.annotations.ApiModelProperty;
 
-public class RoomDetailsDTO {
+public class QuestionDetailsDTO {
 
-	private String roomId;
+	private String questionId;
 
-	private String roomDescription;
+	private String questionDescription;
 
-	private BigDecimal roomPrice;
-
-	@ApiModelProperty(notes = "Room ID", required = true)
-	public String getRoomId() {
-		return this.roomId;
+	@ApiModelProperty(notes = "Question ID", required = true)
+	public String getQuestionId() {
+		return this.questionId;
 	}
 
-	public void setRoomId(final String roomId) {
-		this.roomId = roomId;
+	public void setQuestionId(final String questionId) {
+		this.questionId = questionId;
 	}
 	
-	@ApiModelProperty(notes = "Room Description", required = true)
-	public String getRoomDescription() {
-		return this.roomDescription;
+	@ApiModelProperty(notes = "Question Description", required = true)
+	public String getQuestionDescription() {
+		return this.questionDescription;
 	}
 
-	public void setRoomDescription(final String roomDescription) {
-		this.roomDescription = roomDescription;
-	}
-	
-	@ApiModelProperty(notes = "Room Price", required = true)
-	public BigDecimal getRoomPrice() {
-		return this.roomPrice;
-	}
-
-	public void setRoomPrice(final BigDecimal roomPrice) {
-		this.roomPrice = roomPrice;
-	}
-
-	
+	public void setQuestionDescription(final String questionDescription) {
+		this.questionDescription = questionDescription;
+	}	
 }

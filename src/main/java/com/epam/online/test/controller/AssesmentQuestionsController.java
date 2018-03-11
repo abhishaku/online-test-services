@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.epam.ResourcesURI;
-import com.epam.online.test.service.responses.RoomDetailsResponse;
-import com.epam.online.test.services.RoomDetailsService;
+import com.epam.online.test.common.ResourcesURI;
+import com.epam.online.test.service.responses.AssesmentQuestionsResponse;
+import com.epam.online.test.services.AssesmentQuestionsService;
 
 @RestController
 public class AssesmentQuestionsController 
@@ -23,49 +22,49 @@ public class AssesmentQuestionsController
 	private static final Logger LOGGER = LoggerFactory.getLogger(AssesmentQuestionsController.class);
 	
 	@Autowired
-	private RoomDetailsService roomService;
+	private AssesmentQuestionsService questionsService;
 	
-	public AssesmentQuestionsController(final RoomDetailsService roomService) {
+	public AssesmentQuestionsController(final AssesmentQuestionsService questionsService) {
 		LOGGER.warn("Inside contructor of : " + this.getClass().getName());
-		this.roomService = roomService;
+		this.questionsService = questionsService;
 	}
 	
 	@RequestMapping(value = ResourcesURI.QUESTIONS_URI, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RoomDetailsResponse> getRoomDetails()
+	public ResponseEntity<AssesmentQuestionsResponse> getAllQuestions()
 	{
-		RoomDetailsResponse roomDetails = new RoomDetailsResponse();
+		AssesmentQuestionsResponse questionsResponse = new AssesmentQuestionsResponse();
 		try {
-			roomDetails = roomService.getAllRoomDetails();
+			questionsResponse = questionsService.getAllAssesmentQuestions();
 		} catch (Exception ex) {
 			//roomDetails.setSuccess(false);
 			LOGGER.error("Error while fetching Details from product Service:  ", ex.getMessage(), ex);
-			return new ResponseEntity<>(roomDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(questionsResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		return new ResponseEntity<>(roomDetails, HttpStatus.OK);
+		return new ResponseEntity<>(questionsResponse, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = ResourcesURI.ROOM_DETAILS, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RoomDetailsResponse> getRoomDetailsById(@PathVariable("roomId") String roomId, @RequestHeader HttpHeaders headers)
+	@RequestMapping(value = ResourcesURI.QUESTION_DETAILS, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<AssesmentQuestionsResponse> getQuestionDetailsById(@PathVariable("questionId") String questionId, @RequestHeader HttpHeaders headers)
 	{
-		RoomDetailsResponse roomDetails = new RoomDetailsResponse();
+		AssesmentQuestionsResponse questionsResponse = new AssesmentQuestionsResponse();
 		if(!headers.get("Client-Type").get(0).toString().equals("web"))
 		{
 			LOGGER.error("Missing Header...");
-			roomDetails.setMessage("Missing Client Type Header..");
-			return new ResponseEntity<>(roomDetails, HttpStatus.UNAUTHORIZED);
+			questionsResponse.setMessage("Missing Client Type Header..");
+			return new ResponseEntity<>(questionsResponse, HttpStatus.UNAUTHORIZED);
 		}
 		
 		
 		try {
-			roomDetails = roomService.getRoomDetails(roomId);
+			questionsResponse = questionsService.getQuestionDetails(questionId);
 		} catch (Exception ex) {
 			//roomDetails.setSuccess(false);
 			LOGGER.error("Error while fetching Details from product Service:  ", ex.getMessage(), ex);
-			return new ResponseEntity<>(roomDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(questionsResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		return new ResponseEntity<>(roomDetails, HttpStatus.OK);
+		return new ResponseEntity<>(questionsResponse, HttpStatus.OK);
 	}
 
 }

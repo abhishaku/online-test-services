@@ -3,22 +3,22 @@ package com.epam.online.test.service.responses;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.epam.online.test.dto.RoomDetailsDTO;
+import com.epam.online.test.dto.QuestionDetailsDTO;
 
-public class RoomDetailsResponse extends BaseResponse {
+public class AssesmentQuestionsResponse extends BaseResponse {
 
-	List<RoomDetailsDTO> roomDetails;
+	List<QuestionDetailsDTO> questionDetailsData;
 
-	public List<RoomDetailsDTO> getRoomsDetails() {
-		if (roomDetails == null) {
-			roomDetails = new ArrayList<>();
+	public List<QuestionDetailsDTO> getQuestionsDetails() {
+		if (questionDetailsData == null) {
+			questionDetailsData = new ArrayList<>();
 		}
-		return roomDetails;
+		return questionDetailsData;
 	}
 	
 
-	public void setRoomDetails(List<RoomDetailsDTO> roomDetails) {
-		this.roomDetails = roomDetails;
+	public void setQuestionDetails(final List<QuestionDetailsDTO> questionDetailsData) {
+		this.questionDetailsData = questionDetailsData;
 	}
 
 }
