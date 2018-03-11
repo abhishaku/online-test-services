@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.epam.online.test.controller.AssesmentQuestionsController;
-import com.epam.online.test.dto.QuestionDetailsDTO;
+import com.epam.online.test.model.QuestionDetailsDTO;
 import com.epam.online.test.service.responses.AssesmentQuestionsResponse;
 import com.epam.online.test.services.AssesmentQuestionsService;
 

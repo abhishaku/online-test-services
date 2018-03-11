@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.epam.online.test.dao.entity.Questions;
-import com.epam.online.test.dto.QuestionDetailsDTO;
+import com.epam.online.test.model.QuestionDetailsDTO;
 import com.epam.online.test.repository.QuestionsRepository;
 import com.epam.online.test.service.responses.AssesmentQuestionsResponse;
 import com.epam.online.test.services.AssesmentQuestionsService;

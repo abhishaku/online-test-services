@@ -10,8 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import com.epam.online.test.dto.QuestionDetailsDTO;
+
 import com.epam.online.test.exception.RequestException;
+import com.epam.online.test.model.QuestionDetailsDTO;
 import com.epam.online.test.service.responses.AssesmentQuestionsResponse;
 import com.epam.online.test.services.impl.AssesmentQuestionsServiceImpl;
 import com.pgs.config.AbstractServiceTestConfig;

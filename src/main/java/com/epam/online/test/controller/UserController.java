@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.epam.online.test.dto.UserDTO;
-import com.epam.online.test.dto.UserLoginDTO;
+import com.epam.online.test.model.UserDTO;
+import com.epam.online.test.model.UserLoginDTO;
 import com.epam.online.test.service.responses.UserResponse;
 import com.epam.online.test.services.UserService;
 

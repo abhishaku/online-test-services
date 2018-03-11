@@ -1,7 +1,7 @@
 package com.epam.online.test.services;
 
-import com.epam.online.test.dto.UserDTO;
-import com.epam.online.test.dto.UserLoginDTO;
+import com.epam.online.test.model.UserDTO;
+import com.epam.online.test.model.UserLoginDTO;
 
 /**
  * @author Anand Sadawarte 

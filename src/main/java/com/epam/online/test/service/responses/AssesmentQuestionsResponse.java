@@ -3,7 +3,7 @@ package com.epam.online.test.service.responses;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.epam.online.test.dto.QuestionDetailsDTO;
+import com.epam.online.test.model.QuestionDetailsDTO;
 
 public class AssesmentQuestionsResponse extends BaseResponse {
 

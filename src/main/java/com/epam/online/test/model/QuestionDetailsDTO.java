@@ -1,10 +1,17 @@
-package com.epam.online.test.dto;
+package com.epam.online.test.model;
 
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModelProperty;
 
 public class QuestionDetailsDTO {
 
+	/*below annotation is used to map the DTO field 
+	 with input request in case post/put request.
+	 * 
+	 */
+	@JsonProperty("questionId")
 	private String questionId;
 
 	private String questionDescription;

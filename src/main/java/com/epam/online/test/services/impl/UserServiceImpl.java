@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.epam.online.test.dao.entity.User;
-import com.epam.online.test.dto.UserDTO;
-import com.epam.online.test.dto.UserLoginDTO;
 import com.epam.online.test.exception.RequestException;
+import com.epam.online.test.model.UserDTO;
+import com.epam.online.test.model.UserLoginDTO;
 import com.epam.online.test.repository.UserRepository;
 import com.epam.online.test.services.UserService;
 import com.epam.online.test.utils.PasswordUtility;

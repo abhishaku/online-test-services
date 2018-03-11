@@ -1,4 +1,4 @@
-package com.epam.online.test.dto;
+package com.epam.online.test.model;
 
 
 import io.swagger.annotations.ApiModelProperty;
