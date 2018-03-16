@@ -11,10 +11,10 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-import com.online.test.exception.RequestException;
-import com.online.test.model.QuestionDetailsDTO;
-import com.online.test.service.responses.AssesmentQuestionsResponse;
-import com.online.test.services.impl.AssesmentQuestionsServiceImpl;
+import com.online.test.api.exception.RequestException;
+import com.online.test.api.model.QuestionDetailsDTO;
+import com.online.test.api.services.impl.AssesmentQuestionsServiceImpl;
+import com.online.test.api.services.response.AssesmentQuestionsResponse;
 import com.test.config.AbstractServiceTestConfig;
 
 public class RoomDetailsServiceImplTest extends AbstractServiceTestConfig {

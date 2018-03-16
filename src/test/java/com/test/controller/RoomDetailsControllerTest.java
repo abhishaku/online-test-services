@@ -19,10 +19,10 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.online.test.controller.AssesmentQuestionsController;
-import com.online.test.model.QuestionDetailsDTO;
-import com.online.test.service.responses.AssesmentQuestionsResponse;
-import com.online.test.services.AssesmentQuestionsService;
+import com.online.test.api.controller.AssesmentQuestionsController;
+import com.online.test.api.model.QuestionDetailsDTO;
+import com.online.test.api.services.AssesmentQuestionsService;
+import com.online.test.api.services.response.AssesmentQuestionsResponse;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = AssesmentQuestionsController.class, secure = false)

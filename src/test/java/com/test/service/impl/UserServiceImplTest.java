@@ -7,12 +7,12 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-import com.online.test.dao.entity.User;
-import com.online.test.model.UserDTO;
-import com.online.test.model.UserLoginDTO;
-import com.online.test.repository.UserRepository;
-import com.online.test.services.impl.UserServiceImpl;
-import com.online.test.utils.PasswordUtility;
+import com.online.test.api.dao.entity.User;
+import com.online.test.api.model.UserDTO;
+import com.online.test.api.model.UserLoginDTO;
+import com.online.test.api.repository.UserRepository;
+import com.online.test.api.services.impl.UserServiceImpl;
+import com.online.test.api.util.PasswordUtility;
 import com.test.config.AbstractServiceTestConfig;
 
 /**
