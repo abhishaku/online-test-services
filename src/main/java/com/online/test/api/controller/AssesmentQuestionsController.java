@@ -25,30 +25,28 @@ public class AssesmentQuestionsController
 	@Autowired
 	private AssesmentQuestionsService questionsService;
 	
+	@Autowired
+	private AssesmentQuestionsResponse questionsResponse;
+	
 	public AssesmentQuestionsController(final AssesmentQuestionsService questionsService) {
-		LOGGER.warn("Inside contructor of : " + this.getClass().getName());
 		this.questionsService = questionsService;
 	}
 	
 	@RequestMapping(value = ResourceEndPoints.QUESTIONS_URI, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<AssesmentQuestionsResponse> getAllQuestions()
 	{
-		AssesmentQuestionsResponse questionsResponse = new AssesmentQuestionsResponse();
 		try {
-			questionsResponse = questionsService.getAllAssesmentQuestions();
+			this.questionsResponse = this.questionsService.getAllAssesmentQuestions();
+			return new ResponseEntity<>(this.questionsResponse, HttpStatus.OK);
 		} catch (Exception ex) {
-			//roomDetails.setSuccess(false);
 			LOGGER.error("Error while fetching Details from product Service:  ", ex.getMessage(), ex);
-			return new ResponseEntity<>(questionsResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(this.questionsResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
-		return new ResponseEntity<>(questionsResponse, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = ResourceEndPoints.QUESTION, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<AssesmentQuestionsResponse> getQuestions()
 	{
-		AssesmentQuestionsResponse questionsResponse = new AssesmentQuestionsResponse();
 		try {
 			questionsResponse = questionsService.getAllAssesmentQuestions();
 		} catch (Exception ex) {
