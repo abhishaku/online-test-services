@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
  
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
+import org.springframework.stereotype.Component;
  
+@Component
 public class CustomBasicAuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
  
     @Override
@@ -34,7 +36,7 @@ public class CustomBasicAuthenticationEntryPoint extends BasicAuthenticationEntr
      
     @Override
     public void afterPropertiesSet() throws Exception {
-        setRealmName("MY_TEST_REALM");
+        super.setRealmName(ProtectedAPIConfiguration.realName);
         super.afterPropertiesSet();
     }
 }

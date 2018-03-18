@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.online.test.api.common.ResourcesURI;
+import com.online.test.api.common.ResourceEndPoints;
 import com.online.test.api.services.AssesmentQuestionsService;
 import com.online.test.api.services.response.AssesmentQuestionsResponse;
 
@@ -30,7 +30,7 @@ public class AssesmentQuestionsController
 		this.questionsService = questionsService;
 	}
 	
-	@RequestMapping(value = ResourcesURI.QUESTIONS_URI, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = ResourceEndPoints.QUESTIONS_URI, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<AssesmentQuestionsResponse> getAllQuestions()
 	{
 		AssesmentQuestionsResponse questionsResponse = new AssesmentQuestionsResponse();
@@ -45,7 +45,22 @@ public class AssesmentQuestionsController
 		return new ResponseEntity<>(questionsResponse, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = ResourcesURI.QUESTION_DETAILS, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = ResourceEndPoints.QUESTION, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<AssesmentQuestionsResponse> getQuestions()
+	{
+		AssesmentQuestionsResponse questionsResponse = new AssesmentQuestionsResponse();
+		try {
+			questionsResponse = questionsService.getAllAssesmentQuestions();
+		} catch (Exception ex) {
+			//roomDetails.setSuccess(false);
+			LOGGER.error("Error while fetching Details from product Service:  ", ex.getMessage(), ex);
+			return new ResponseEntity<>(questionsResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		return new ResponseEntity<>(questionsResponse, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = ResourceEndPoints.QUESTION_DETAILS, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<AssesmentQuestionsResponse> getQuestionDetailsById(@PathVariable("questionId") String questionId, @RequestHeader HttpHeaders headers)
 	{
 		AssesmentQuestionsResponse questionsResponse = new AssesmentQuestionsResponse();
